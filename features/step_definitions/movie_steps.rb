@@ -50,7 +50,7 @@ Then /^I should (not )?see the following movies: (.*)$/ do |no, movie_list|
   # Take a look at web_steps.rb Then /^(?:|I )should see "([^"]*)"$/
   
   movie_list.split(", ").each do |movie|
-    if !should.nil?
+    if should_not
       expect(page).not_to have_content(movie)
     else
       expect(page).to have_content(movie)
@@ -61,7 +61,7 @@ end
 Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
 #   pending "Fill in this step in movie_steps.rb"
-  rows = page.all('table#movies tbody tr').length
+  rows = page.all('table#movies tr').length
   expect(rows).to eq Movie.count
   # expect(num_rows).to eq Movie.count  
 end
