@@ -61,7 +61,7 @@ end
 Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
 #   pending "Fill in this step in movie_steps.rb"
-  rows = page.all('table#movies tr').length
+  rows = page.all('#movies >tbody >tr').size()
   expect(rows).to eq Movie.count
   # expect(num_rows).to eq Movie.count  
 end
